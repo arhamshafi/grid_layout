@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.20s linear;
+        }
+        .navbar{
+            width: 100%;
+            height: max-content;
+            padding: 10px 10px;
+            display: flex;
+            /* overflow: hidden; */
+            background-color: white;
+            justify-content:space-between;
+            align-items: center;
+            position: fixed;
+            z-index: 111;
+            top: 0;
+            left: 0;
+            
+            /* border: solid black; */
+            box-shadow: 1px 1px 5px 0px grey;
+        }
+        .icondiv{
+            width: 300px;
+            height: max-content;
+            /* border: solid black; */
+            display: flex;
+            justify-content:space-evenly;
+            font-size: 20px;
+            
+            align-items: center;
+        }
+        .icondiv i:hover{
+            cursor: pointer;
+            filter: brightness(0) saturate(100%) invert(39%) sepia(54%) saturate(3451%) hue-rotate(314deg) brightness(102%) contrast(103%);
+        }
+        .logodiv{
+            width: 250px;
+            height: 70px;
+            /* border: solid black; */
+        }
+        #logoimg{
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        #nav{
+            width:550px;
+            height: max-content;
+            /* border: solid black; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .navicondiv{
+            width: 40px;
+            height: max-content;
+            display: none;
+            /* border: solid black; */
+            font-size: 20px;
+        }
+        #navicon{
+            font-size:30px;
+            filter: brightness(0) saturate(100%) invert(22%) sepia(80%) saturate(6102%) hue-rotate(355deg) brightness(105%) contrast(106%);
+        }
+        .navlist{
+            list-style: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .navlist:hover{
+            color:rgb(224, 28, 93);
+        }
+        .blog{
+            color:rgb(224, 28, 93);
+        }
+       
+        .dropdown1{
+            width:35%;
+            height: max-content;
+            position: absolute;
+            top: 250%;
+            left:0;
+            opacity: 0;
+            visibility: hidden;
+            /* overflow: hidden; */
+            box-shadow: 1px 1px 10px 0px grey;
+            background-color: white;
+            /* border: solid black; */
+            /* z-index: 111; */
+        }
+        .home:hover + .dropdown1{
+            opacity: 1;
+            visibility: visible;
+            top:180%;
+        }
+        .dropdown1:hover{
+            opacity: 1;
+            visibility: visible;
+            top:180%
+        }
+        .dd1box6{
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: grey;
+            position: relative;
+            border-top: solid 1px grey;
+        }
+        #hsicon{
+            position:absolute;
+            right: 20%;
+        }
+        .dd1box6:hover{
+            color:rgb(224, 28, 93) ;
+        }
+        .pinkanimediv{
+            width: 100%;
+            height:40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color:rgb(224, 28, 93) ;
+        }
+        .dd1box6:hover .pinkanimediv{
+            animation: pinkanime .5s ease-out;
+        }
+        @keyframes pinkanime{
+            from{
+                width: 0;
+                opacity: 1;
+            }
+            to{
+                width: 100%;
+                opacity: 0;
+            }
+        }
+        .dd1innerdropdown{
+            width: 100%;
+            height:max-content;
+            box-shadow: 1px 1px 10px 0px grey;
+            flex-direction: column;
+            background-color: white;
+            position: absolute;
+            left:100%;
+            opacity: 0;
+            overflow: hidden;
+            visibility: hidden;
+            top:100%;
+        }
+        .idd1box{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            position:relative;
+            justify-content: center;
+            align-items: center;
+            border-top:solid 1px grey;
+            color: grey;
+        }
+        .idd1box:hover{
+            color:rgb(224, 28, 93) ;
+        }
+        .hs:hover .dd1innerdropdown{
+            top: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    .pinkanimediv2{
+        width: 0;
+        height: 40px;
+        background-color: rgb(224, 28, 93) ;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .3;
+     }
+    .dropdown2{
+        width: 35%;
+        height: max-content;
+        position: absolute;
+        top:250%;
+        cursor: pointer;
+        box-shadow: 1px 1px 10px 0px grey;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        left: 16%;
+        /* border: solid black; */
+    }
+    .dd2box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: grey;
+        position: relative;
+        height: 40px;
+        background-color: white;
+        border-top: solid 1px black;
+    }
+    .about:hover + .dropdown2{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .dropdown2:hover{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;   
+    }
+    .idd1box:hover .pinkanimediv2{
+     animation: .5s pinkaminediv2 forwards ease-out;
+     }
+     .dd2box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    @keyframes pinkaminediv2{
+     from{
+         opacity: 1;
+         width: 0;
+     }
+     to{
+         opacity: 0;
+         width: 100%;
+     }
+     }
+     .dropdown3{
+        position: absolute;
+        top: 250%;
+        left: 33%;
+        background-color: white;
+        width: 35%;
+        height: max-content;
+        box-shadow: 1px 1px 10px 0px grey;
+        opacity: 0;
+        cursor: pointer;
+        overflow: hidden;
+        visibility: hidden;
+     }
+     .dd3box{
+        width: 100%;
+        height: 40px;
+        border-top: 1px green solid ;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: grey;
+     }
+    .dd3box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    .dropdown3:hover{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .port:hover+ .dropdown3{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .dropdown4{
+        width: 35%;
+        height: max-content;
+        background-color: white;
+        box-shadow: 1px 1px 10px 0px grey;
+        position: absolute;
+        top: 250%;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+        left: 57%;
+        cursor: pointer;
+        /* border: solid black; */
+        color: grey;
+    }
+    .dd4box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        position: relative;
+        border-top: 1px solid grey;
+    }
+    .dd4box:hover{
+        color: rgb(224, 28, 93) ;
+    }
+   
+    .dd4box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    .dropdown4:hover{
+        top: 180%;
+        visibility: visible;
+        opacity: 1;
+    }
+    .blog:hover+ .dropdown4{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    /* .dropdown4:hover .blog{
+        color: rgb(224, 28, 93) ;
+        
+    } */
+    .redline{
+        border-top: solid red ;
+    }
+    header{
+        width: 100%;
+        padding: 190px 0px;
+        height: max-content;
+        background-color:whitesmoke;
+    }
+    .h-aboutparent{
+            width: 600px;
+            height: 250px;
+            padding: 20px 0px;
+            /* border: solid black; */
+            position: relative;
+            margin: auto;
+        
+        }   
+        #h-p1{
+            font-size: 18px;
+            text-align: center;
+            color: grey;
+            position: absolute;
+            line-height: 30px;
+            top:0;
+            left:35%;
+        }
+        #h-h1{
+            font-size: 80px;
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            text-align: center;
+            color:rgb(60, 60, 60);
+        }
+        #h-p2{
+            font-size: 18px;
+            text-align: center;
+            color: grey;
+            top: 55%;
+            left: 0%;
+            position: absolute;
+            line-height: 30px;
+        }
+        .yellowdiv{
+            width: 110px;
+            height: 110px;
+            border-radius: 100px;
+            position: absolute;
+            background-color: rgb(255, 255, 12);
+            top: 11%;
+            /* z-index: 1; */
+            left: 20%;
+        }
+        .green{
+            width: 9%;
+            height: 23%;
+            border-radius:100px;
+            position: absolute;
+            background-color:rgb(155, 255, 198);
+            top: 11%;
+            /* z-index: -1; */
+            right: 15%;
+        }
+       /* /////////////////////////////////////////////////  */
+       /* ///////////////////////////////////////////////// */
+        #sec-1{
+            width: 100%;
+            height: max-content;
+            /* border: solid black; */
+        }
+        .sec-border1{
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        #laptopimg{
+            width: 100%;
+            height: 100%;
+        }
+        .blackdiv{
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: .5;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #arrow{
+            position: absolute;
+            top: 52%;
+            right:2%;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 5;
+        }
+        #arrow:hover{
+            font-size: 25px;
+        }
+        .sec-border1:hover #arrow{
+            filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(103%) contrast(104%);
+        }
+        .whitediv{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            transition: all 0.5s linear;
+            left: 0;
+        }
+        .sec-border1:hover .whitediv{
+            left:100%;
+            opacity: 0;
+        }
+        .sec-1writediv{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3%;
+            left: 0;
+            /* border: solid red; */
+        }
+        .datediv{
+            width: 150px;
+            height: 200px;
+            border: solid grey;
+            display: flex;
+            position: relative;
+            z-index: 5;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        .dateinnerdiv{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90%;
+            border: solid grey;
+            gap: 20px;
+            border-radius: 10px;
+            background-color: white;
+        }
+        #dh1{
+            font-size: 50px;
+            color: black;
+        }
+        .datediv:hover #dh1{
+            font-size: 60px;
+        }
+        #dp1{
+            color:grey;
+            font-size: 20px;
+        }
+       
+        .infodiv{
+            width: 80%;
+            height: max-content;
+            z-index: 5;
+            position: relative;
+            /* border: solid black; */
+            padding: 10px 0px;
+        }
+        #ip1{
+            color:grey;
+            font-size: 20px;
+        }
+        .sec-border1:hover #ip1{
+            color: white;
+        }
+        #ih1{
+            color: black;
+            font-size: 40px;
+            margin-top: 1%;
+        }
+        .sec-border1:hover #ih1{
+            color: white;
+            
+        }
+        /* ///////////////////////////////// */
+        /* #ih1:hover{
+            color: rgb(224, 28, 93) ;
+        } */
+         /* /////////////////////////////////// */
+        #ip2{
+            color: black;
+            font-size: 18px;
+            word-spacing: 3px;
+            margin-top: 2%;
+        }
+        .sec-border1:hover #ip2{
+            color: white;
+        }
+        .admindiv{
+            width: 350px;
+            height: max-content;
+            /* border: solid white; */
+            margin-top: 2%;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            gap: 10px;
+        }
+        #pink{
+            color:  rgb(224, 28, 93);
+        }
+        #ap1{
+            color: black;
+        }
+        .sec-border1:hover #ap1{
+            color: white;
+        }
+
+
+       /* ////////////////////////////////////////////// */
+        footer{
+        width: 100%;
+        height: max-content;
+        padding: 70px 0px;
+        background-color: whitesmoke;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+    }
+    .f-logodiv{
+        width: fit-content;
+        height: max-content;
+        cursor: pointer;
+        /* border: solid black; */
+    }
+    #f-logo{
+        width: 100%;
+    }
+    #f-para1{
+        color: black;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 1%;
+    }
+    .f-icondiv{
+        width: 300px;
+        height: max-content;
+        /* border: solid black; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 2%;
+    }
+    .f-icondiv i{
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .f-icondiv i:hover{
+        transform: scale(1.3);
+        filter: brightness(0) saturate(100%) invert(20%) sepia(95%) saturate(4126%) hue-rotate(317deg) brightness(103%) contrast(101%);
+    }
+    a{
+        text-decoration: none;
+        color: grey;
+    }
+        /* ////////////////////////////////////////////////////////////////////// */
+       @media screen and (max-width:1460px) {
+            #arrow{
+                top: 40%;
+            }
+       }
+        @media screen and (max-width:1250px){
+            #nav{
+                width: 500px;
+            }
+            #navicon{
+                font-size: 20px;
+            }
+            .navlist{
+                font-size: 15px;
+            }
+            .logodiv{
+                height: 60px;
+                width: 230px;
+            }
+        }
+        @media screen and (max-width:1090px){
+            .icondiv{
+                display: none;
+            }
+            #arrow{
+                top: 70%;
+            }
+        }
+        @media screen and (max-width:800px){
+            #nav{
+                display: none;
+            }
+            .navicondiv{
+                display: block;
+            }
+            .logodiv{
+                height: 40px;
+                width: 180px;
+            }
+            header{
+                padding-top: 100px;
+                padding-bottom: 60px;
+            }
+            .sec-1writediv{
+                flex-direction: column;
+                padding: 20px 0px;
+            }
+            .sec-border1{
+                height: 450px;
+            }
+            .datediv{
+                align-self: flex-start;
+                margin-left: 5%;
+            }
+            .infodiv{
+                width: 90%;
+            }
+            #ih1{
+                font-size: 30px;
+            }
+            #ip2{
+                font-size: 15px;
+            }
+            #arrow{
+                top: 30%;
+                font-size: 30px;
+            }
+            #arrow:hover{
+                font-size: 40px;
+            }
+            
+        }
+        @media screen and (max-width:601px) {
+            .h-aboutparent{
+                width: 400px;
+                height: 180px;
+            }
+            header{
+                padding-top: 70px;
+                padding-bottom: 40px;
+            }
+            #h-p1{
+                left: 30%;
+            }
+            #h-h1{
+                font-size: 50px;
+                left: 25%;
+                top: 20%;
+            }
+            #h-p2{
+                line-height: 22px;
+                font-size: 17px;
+                top: 60%;
+            }
+            .yellowdiv{
+                width: 70px;
+                height: 70px;
+                border-radius: 70px;
+                top: 13%;
+            }
+            .green{
+                height: 20%;
+            }
+            #arrow{
+                top: 40%;
+                font-size: 20px;
+            }
+        }
+        @media screen and (max-width:450px){
+            #ih1{
+                font-size: 20px;
+                margin-top: 3%;
+            }
+            #ip2{
+                font-size: 13px;
+                word-spacing: 0px;
+            }
+            .admindiv{
+                margin-top: 3%;
+            }
+            #ap1{
+                font-size: 15px;
+            }
+            .datediv{
+                width: 100px;
+                height: 150px;
+            }
+            
+        }
+        @media screen and (max-width:400px) {
+            .h-aboutparent{
+                width: 315px;
+            }
+            #h-p1{
+                font-size: 15px;
+            }
+            #h-h1{
+                font-size: 50px;
+                left: 18%;
+            }
+            .green{
+                height: 15%;
+            }
+            header{
+                padding-top: 70px;
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="navbar">
+                <div class="icondiv">
+                    <i class="fa-brands fa-facebook-f"data-aos="fade-up" data-aos-duration="2100"></i>
+                    <i class="fa-brands fa-twitter"data-aos="fade-up" data-aos-duration="1700"></i>
+                    <i class="fa-brands fa-pinterest-p"data-aos="fade-up" data-aos-duration="1300"></i>
+                    <i class="fa-brands fa-instagram"data-aos="fade-up" data-aos-duration="900"></i>
+                    <i class="fa-brands fa-instalod"data-aos="fade-up" data-aos-duration="500"></i>
+                </div>
+                <div class="logodiv"><img id="logoimg" src="./logo.png" alt=""></div>
+                <ul id="nav">
+                    <li class="navlist home"data-aos="fade-up" data-aos-duration="500">HOME</li>
+                    <div class="dropdown1">
+                        <a href="../grid web home/grid web.html"><div class="dd1box6 redline">Creative Home <div class="pinkanimediv"></div></div></a>
+                        <a href="../gridweb dh/grid 3 web.html"><div class="dd1box6">Designer Home <div class="pinkanimediv"></div></div></a>
+                        <div class="dd1box6">Portfolio Home <div class="pinkanimediv"></div></div>
+                        <a href="../grid web parallex/parallex.html"><div class="dd1box6">Paralax Home <div class="pinkanimediv"></div></div></a>
+                        <div class="dd1box6">Carousal Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6 hs">Header Style <i id="hsicon" class="fa-solid fa-angle-right"></i> <div class="pinkanimediv"></div>
+                        <div class="dd1innerdropdown">
+                            <div class="idd1box redline">Header Style 01 <div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 02<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 03<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 04<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 05<div class="pinkanimediv2"></div></div>
+                        </div>
+                    </div>
+                    </div>
+                    <li class="navlist about"data-aos="fade-up" data-aos-duration="900">ABOUT</li>
+                    <div class="dropdown2">
+                        <a href="../grid 2 web about/gridabout.html"><div class="dd2box redline">About <div class="pinkanimediv"></div></div></a>
+                        <div class="dd2box">Error Page <div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist port"data-aos="fade-up" data-aos-duration="1300">PORTFOLIO</li>
+                    <div class="dropdown3">
+                        <div class="dd3box redline">Portfolio Left-sidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Right-sidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Centered<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Slide<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Masonry<div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist blog"data-aos="fade-up" data-aos-duration="1700">BLOG</li>
+                    <div class="dropdown4">
+                        <div class="dd4box redline">Blog With Slidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog Grid<div class="pinkanimediv"></div></div>
+                      <a href="../grid web bloglist/bloglist.html"><div class="dd4box">Blog List<div class="pinkanimediv"></div></div></a>
+                        <div class="dd4box">Blog Mansonry<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog Single<div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist"data-aos="fade-up" data-aos-duration="2100">CONTACT US</li>
+                    <i class="fa-solid fa-bars"></i></ul>
+                    <div class="navicondiv">
+                        <i id="navicon" class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+                <div class="h-aboutparent">
+                    <div class="yellowdiv"data-aos="fade-up" data-aos-duration="900"></div>
+                    <div class="green"data-aos="fade-up" data-aos-duration="900"></div>
+                    <p id="h-p1"data-aos="fade-up" data-aos-duration="500">Welcome To Limerick</p>
+                    <h1 id="h-h1"data-aos="fade-up" data-aos-duration="1300">Blog List</h1>
+                    <p id="h-p2"data-aos="fade-up" data-aos-duration="1700">I like to think that my work is a living, breathing embodiment of my passion for discovery. Here’s some of it.</p>
+                </div>
+        </header>
+        <section id="sec-1">
+            <div class="sec-border1"><img id="laptopimg" src="./8.jpg" alt="">
+            <div class="blackdiv"></div>
+            <div class="whitediv"></div>
+            <i id="arrow" class="fa-solid fa-arrow-right"></i>
+            <div class="sec-1writediv">
+                <div class="datediv">
+                    <div class="dateinnerdiv"><h1 id="dh1">26</h1><p id="dp1">July-2019</p></div>
+                </div>
+                <div class="infodiv">
+                    <p id="ip1">Photography</p>
+                    <h1 id="ih1">Challange yourself to win the future.</h1>
+                    <p id="ip2">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additionalPhosfluorescently engage worldwide Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking.</p>
+                    <div class="admindiv"><p id="ap1">Admin by John Doue</p><p id="ap1">, <span id="pink">26</span> likes</p><p id="ap1">, <span id="pink">06</span> comments</p></div>
+                </div>
+
+            </div>
+            </div>
+            <!-- <div class="sec-border2"></div> -->
+            <div class="sec-border1"><img id="laptopimg" src="./8.jpg" alt="">
+                <div class="blackdiv"></div>
+                <div class="whitediv"></div>
+                <i id="arrow" class="fa-solid fa-arrow-right"></i>
+                <div class="sec-1writediv">
+                    <div class="datediv">
+                        <div class="dateinnerdiv"><h1 id="dh1">27</h1><p id="dp1">July-2019</p></div>
+                    </div>
+                    <div class="infodiv">
+                        <p id="ip1">Photography</p>
+                        <h1 id="ih1">We provide wide range of web & business services.</h1>
+                        <p id="ip2">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additionalPhosfluorescently engage worldwide Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking.</p>
+                        <div class="admindiv"><p id="ap1">Admin by John Doue</p><p id="ap1">, <span id="pink">26</span> likes</p><p id="ap1">, <span id="pink">06</span> comments</p></div>
+                    </div>
+    
+                </div>
+                </div>
+                <div class="sec-border1"><img id="laptopimg" src="./8.jpg" alt="">
+                    <div class="blackdiv"></div>
+                    <div class="whitediv"></div>
+                    <i id="arrow" class="fa-solid fa-arrow-right"></i>
+                    <div class="sec-1writediv">
+                        <div class="datediv">
+                            <div class="dateinnerdiv"><h1 id="dh1">28</h1><p id="dp1">July-2019</p></div>
+                        </div>
+                        <div class="infodiv">
+                            <p id="ip1">Photography</p>
+                            <h1 id="ih1">Business Cards That Inspire.</h1>
+                            <p id="ip2">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additionalPhosfluorescently engage worldwide Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking.</p>
+                            <div class="admindiv"><p id="ap1">Admin by John Doue</p><p id="ap1">, <span id="pink">26</span> likes</p><p id="ap1">, <span id="pink">06</span> comments</p></div>
+                        </div>
+        
+                    </div>
+                    </div>
+                    <div class="sec-border1"><img id="laptopimg" src="./8.jpg" alt="">
+                        <div class="blackdiv"></div>
+                        <div class="whitediv"></div>
+                        <i id="arrow" class="fa-solid fa-arrow-right"></i>
+                        <div class="sec-1writediv">
+                            <div class="datediv">
+                                <div class="dateinnerdiv"><h1 id="dh1">29</h1><p id="dp1">July-2019</p></div>
+                            </div>
+                            <div class="infodiv">
+                                <p id="ip1">Photography</p>
+                                <h1 id="ih1">Range of web & business services.</h1>
+                                <p id="ip2">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additionalPhosfluorescently engage worldwide Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking.</p>
+                                <div class="admindiv"><p id="ap1">Admin by John Doue</p><p id="ap1">, <span id="pink">26</span> likes</p><p id="ap1">, <span id="pink">06</span> comments</p></div>
+                            </div>
+            
+                        </div>
+                        </div>
+                        <div class="sec-border1"><img id="laptopimg" src="./8.jpg" alt="">
+                            <div class="blackdiv"></div>
+                            <div class="whitediv"></div>
+                            <i id="arrow" class="fa-solid fa-arrow-right"></i>
+                            <div class="sec-1writediv">
+                                <div class="datediv">
+                                    <div class="dateinnerdiv"><h1 id="dh1">30</h1><p id="dp1">July-2019</p></div>
+                                </div>
+                                <div class="infodiv">
+                                    <p id="ip1">Photography</p>
+                                    <h1 id="ih1">Business services we provide wide range.</h1>
+                                    <p id="ip2">Breathing embodiment of my passion for discovery. Here’s some of it. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additionalPhosfluorescently engage worldwide Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking.</p>
+                                    <div class="admindiv"><p id="ap1">Admin by John Doue</p><p id="ap1">, <span id="pink">26</span> likes</p><p id="ap1">, <span id="pink">06</span> comments</p></div>
+                                </div>
+                
+                            </div>
+                            </div>
+        </section>
+        <footer>    
+            <div class="f-logodiv"><img id="f-logo" src="../grid 2 web/logo.png" alt=""></div>
+            <p id="f-para1">© Copyright 2019 Limerick. All Rights Reserved</p>
+            <div class="f-icondiv">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-pinterest"></i>
+            </div>
+        </footer>
+    </main>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 3</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.20s linear;
+        }
+        .navbar{
+            width: 100%;
+            height: max-content;
+            padding: 10px 10px;
+            display: flex;
+            /* overflow: hidden; */
+            background-color: white;
+            justify-content:space-between;
+            align-items: center;
+            position: fixed;
+            z-index: 111;
+            top: 0;
+            left: 0;
+            
+            /* border: solid black; */
+            box-shadow: 1px 1px 5px 0px grey;
+        }
+        .icondiv{
+            width: 300px;
+            height: max-content;
+            /* border: solid black; */
+            display: flex;
+            justify-content:space-evenly;
+            font-size: 20px;
+            
+            align-items: center;
+        }
+        .icondiv i:hover{
+            cursor: pointer;
+            filter: brightness(0) saturate(100%) invert(39%) sepia(54%) saturate(3451%) hue-rotate(314deg) brightness(102%) contrast(103%);
+        }
+        .logodiv{
+            width: 250px;
+            height: 70px;
+            /* border: solid black; */
+        }
+        #logoimg{
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        #nav{
+            width:550px;
+            height: max-content;
+            /* border: solid black; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .navicondiv{
+            width: 40px;
+            height: max-content;
+            display: none;
+            /* border: solid black; */
+            font-size: 20px;
+        }
+        #navicon{
+            font-size:30px;
+            filter: brightness(0) saturate(100%) invert(22%) sepia(80%) saturate(6102%) hue-rotate(355deg) brightness(105%) contrast(106%);
+        }
+        .navlist{
+            list-style: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .navlist:hover{
+            color:rgb(224, 28, 93);
+        }
+        .home{
+            color:rgb(224, 28, 93);
+        }
+       
+        .dropdown1{
+            width:35%;
+            height: max-content;
+            position: absolute;
+            top: 250%;
+            left:0;
+            opacity: 0;
+            visibility: hidden;
+            /* overflow: hidden; */
+            box-shadow: 1px 1px 10px 0px grey;
+            background-color: white;
+            /* border: solid black; */
+            /* z-index: 111; */
+        }
+        .home:hover + .dropdown1{
+            opacity: 1;
+            visibility: visible;
+            top:180%;
+        }
+        .dropdown1:hover{
+            opacity: 1;
+            visibility: visible;
+            top:180%
+        }
+        .dd1box6{
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: grey;
+            position: relative;
+            border-top: solid 1px grey;
+        }
+        #hsicon{
+            position:absolute;
+            right: 20%;
+        }
+        .dd1box6:hover{
+            color:rgb(224, 28, 93) ;
+        }
+        .pinkanimediv{
+            width: 100%;
+            height:40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color:rgb(224, 28, 93) ;
+        }
+        .dd1box6:hover .pinkanimediv{
+            animation: pinkanime .5s ease-out;
+        }
+        @keyframes pinkanime{
+            from{
+                width: 0;
+                opacity: 1;
+            }
+            to{
+                width: 100%;
+                opacity: 0;
+            }
+        }
+        .dd1innerdropdown{
+            width: 100%;
+            height:max-content;
+            box-shadow: 1px 1px 10px 0px grey;
+            flex-direction: column;
+            background-color: white;
+            position: absolute;
+            left:100%;
+            opacity: 0;
+            overflow: hidden;
+            visibility: hidden;
+            top:100%;
+        }
+        .idd1box{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            position:relative;
+            justify-content: center;
+            align-items: center;
+            border-top:solid 1px grey;
+            color: grey;
+        }
+        .idd1box:hover{
+            color:rgb(224, 28, 93) ;
+        }
+        .hs:hover .dd1innerdropdown{
+            top: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    .pinkanimediv2{
+        width: 0;
+        height: 40px;
+        background-color: rgb(224, 28, 93) ;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .3;
+     }
+    .dropdown2{
+        width: 35%;
+        height: max-content;
+        position: absolute;
+        top:250%;
+        cursor: pointer;
+        box-shadow: 1px 1px 10px 0px grey;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        left: 16%;
+        /* border: solid black; */
+    }
+    .dd2box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: grey;
+        position: relative;
+        height: 40px;
+        background-color: white;
+        border-top: solid 1px black;
+    }
+    .about:hover + .dropdown2{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .dropdown2:hover{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;   
+    }
+    .idd1box:hover .pinkanimediv2{
+     animation: .5s pinkaminediv2 forwards ease-out;
+     }
+     .dd2box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    @keyframes pinkaminediv2{
+     from{
+         opacity: 1;
+         width: 0;
+     }
+     to{
+         opacity: 0;
+         width: 100%;
+     }
+     }
+     .dropdown3{
+        position: absolute;
+        top: 250%;
+        left: 33%;
+        background-color: white;
+        width: 35%;
+        height: max-content;
+        box-shadow: 1px 1px 10px 0px grey;
+        opacity: 0;
+        cursor: pointer;
+        overflow: hidden;
+        visibility: hidden;
+     }
+     .dd3box{
+        width: 100%;
+        height: 40px;
+        border-top: 1px green solid ;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: grey;
+     }
+    .dd3box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    .dropdown3:hover{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .port:hover+ .dropdown3{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .dropdown4{
+        width: 35%;
+        height: max-content;
+        background-color: white;
+        box-shadow: 1px 1px 10px 0px grey;
+        position: absolute;
+        top: 250%;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+        left: 57%;
+        cursor: pointer;
+        /* border: solid black; */
+        color: grey;
+    }
+    .dd4box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        position: relative;
+        border-top: 1px solid grey;
+    }
+    .dd4box:hover{
+        color: rgb(224, 28, 93) ;
+    }
+   
+    .dd4box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    .dropdown4:hover{
+        top: 180%;
+        visibility: visible;
+        opacity: 1;
+    }
+    .blog:hover+ .dropdown4{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    /* .dropdown4:hover .blog{
+        color: rgb(224, 28, 93) ;
+        
+    } */
+    .redline{
+        border-top: solid red ;
+    }
+    header{
+        width: 100%;
+        padding: 190px 0px;
+        height: max-content;
+        background-color:whitesmoke;
+    }
+/* //////////////////////////////////////////////////////////////////////////////// */
+    .h-border{
+        width: 850px;
+        height: max-content;
+        /* border: solid black; */
+        display: flex;
+        align-items: center;
+        position: relative;
+        /* z-index: 3; */
+        padding: 24px 0px;
+        flex-direction: column;
+        margin: auto;
+    }
+    #h-p1{
+        color: grey;
+        font-size: 20px;
+    }
+    #h-h1{
+        color: rgb(53, 53, 53);
+        font-size: 100px;
+        z-index: 2;
+        margin-top:5%;
+    }
+    #i{
+        color: plum;
+    }
+    #h-p2{
+        font-size: 18px;
+        text-align: center;
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        margin-top: 2%;
+        z-index: 2;
+        color: rgb(54, 54, 54);
+    }   
+    #h-b1{
+        width: 180px;
+        /* height: 0px; */
+        cursor: pointer;
+        border: none;
+        padding: 20px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 2%;
+        background:linear-gradient(10deg,rgb(254,142,248),rgb(203,140,255));
+        color: white;
+        border-radius: 30px;
+    }
+    #h-b1:hover{
+        background:linear-gradient(180deg,rgb(254,142,248),rgb(203,140,255));
+        letter-spacing: 1px;
+    }
+    .yellowdiv{
+        width: 20%;
+        height: 45%;
+        z-index: 1;
+        border-radius: 100px;
+        background-color: yellow;
+        position: absolute;
+        top: 14%;
+        left: -7%;
+    }
+    .plumdiv{
+        position: absolute;
+        top: 20%;
+        right: 17.4%;
+        width: 3%;
+        height: 6%;
+        border-radius: 100px;
+        background:linear-gradient(50deg,rgb(254,142,248),rgb(203,140,255));
+    }
+    .plumdiv:hover{
+        background:linear-gradient(150deg,rgb(254,142,248),rgb(203,140,255));
+        
+    }
+    /* ////////////////////////////////////////////// */
+    #sec-1{
+        width: 100%;
+        height: max-content;
+        /* border: solid black; */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+    .sec-1box{
+        /* border: solid black; */
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        
+    }
+    .box7{
+        grid-column: 3/5;
+        grid-row: 2/4;
+    }
+    .box8{
+        grid-column: 1/2;
+        grid-row: 4/6;
+    }
+    .box15{
+        grid-column: 3/5;
+    }
+    #gridimg{
+        width: 100%;
+        transition: all 0.8s linear;
+        height: 100%;
+    }
+    .sec-1box:hover #gridimg{
+        transform: scale(1.2);
+        rotate: -3deg;
+    }
+    .flipdiv{
+        width: 50%;
+        height: 50%;
+        /* border: solid red; */
+        background-color: white;
+        opacity: .0;
+        position: absolute;
+        top: 20%;
+        left:20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .5s linear all;
+        /* perspective: 1000px; */
+    }
+   
+    .sec-1box:hover .flipdiv{
+        transform:  rotatey(360deg);
+        width: 80%;
+        height: 80%;
+        left: 10%;
+        opacity: .8;
+        top: 10%;
+    }
+    
+    .sec-1box:hover .effectbox{
+        opacity: .9;
+    }
+    #fliph1{
+        color: black;
+        position: absolute;
+        top: 55%;
+        left: 20%;
+        transition: all 0.5s linear;
+        font-size: 30px;
+        opacity: 0;
+        z-index: 5;
+    }
+    #flippara{
+        color:grey;
+        position: absolute;
+        top: 70%;
+        left: 43%;
+        opacity: 0;
+        font-size: 18px;
+        transition: all 0.5s linear;
+        z-index: 5;
+    }
+    .yellowdiv2{
+        width: 10%;
+        height: 10%;
+        border-radius: 100px;
+        background-color: yellow;
+        position: absolute;
+        top: 55%;
+        transition: all 0.5s linear;
+        left: 25%;
+        opacity: 0;
+        z-index: 4;
+    }
+    .y3{
+        height: 5%;
+        width: 5%;
+    }
+    .y4{
+        height: 5%;
+    }
+    .sec-1box:hover  .yellowdiv2{
+        opacity: 1;
+        top: 45%;
+    }
+    .sec-1box:hover  #flippara{
+        top: 60%;
+        opacity: 1;
+    }
+    .sec-1box:hover #fliph1{
+        top: 45%;
+        opacity: 1;
+    }
+    
+
+
+/* //////////////////////////////////////////// */
+    footer{
+        width: 100%;
+        height: max-content;
+        padding: 70px 0px;
+        background-color: whitesmoke;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+    }
+    .f-logodiv{
+        width: fit-content;
+        height: max-content;
+        /* border: solid black; */
+    }
+    #f-logo{
+        width: 100%;
+    }
+    #f-para1{
+        color: black;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 1%;
+    }
+    .f-icondiv{
+        width: 300px;
+        height: max-content;
+        /* border: solid black; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 2%;
+    }
+    .f-icondiv i{
+        font-size: 20px;
+    }
+
+    /* ////////////////////////////////////////////////////// */
+    /* ........................................................ */
+    @media screen and (max-width:1250px){
+            #nav{
+                width: 500px;
+            }
+            #navicon{
+                font-size: 20px;
+            }
+            .navlist{
+                font-size: 15px;
+            }
+            .logodiv{
+                height: 60px;
+                width: 230px;
+            }
+        }
+    @media screen and (max-width:1090px){
+            .icondiv{
+                display: none;
+            }
+    }
+    @media screen and (max-width:990px) {
+        #sec-1{
+            grid-template-columns: 1fr 1fr;
+            /* grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%; */
+            grid-template-rows: auto;
+        }
+        .box1{
+            grid-column: 1/2;
+            grid-row: 1/2;
+        }
+        .box2{
+            grid-column: 2/3;
+            grid-row: 1/2;
+        }
+        .box3{
+            grid-column: 1/2;
+            grid-row:2/3;
+        }
+        .box4{
+            grid-column: 2/3;
+            grid-row:2/3;
+        }
+        .box5{
+            grid-column: 1/2;
+            grid-row:4/5;
+        }
+        .box6{
+            grid-column: 2/3;
+            grid-row:4/5;
+        }
+        .box7{
+            grid-column: 1/3;
+            grid-row: 5/7;
+        }
+        .box8{
+            grid-column: 1/2;
+            grid-row:8/10;
+        }
+        .box9{
+            grid-column: 2/3;
+            grid-row:7/8;
+        }
+        .box10{
+            grid-column: 2/3;
+            grid-row: 8/9;
+        }
+        .box11{
+            grid-column: 2/3;
+            grid-row:11/12 ;
+        }
+        .box12{
+            grid-column: 2/3;
+            grid-row:9/11;
+        }
+        .box13{
+            grid-column: 1/2;
+            grid-row: 7/8;
+        }
+        .box14{
+            grid-column: 1/2;
+            grid-row: 10/13;
+        }
+        .box15{
+            grid-column: 2/3;
+            grid-row: 12/13;
+        }
+       
+    }
+    @media screen and (max-width:850px) {
+        .h-border{
+                width: 500px;
+                transform: translateY(40px);
+            }
+            #h-h1{
+                font-size: 60px;
+            }
+            #h-p2{
+                font-size: 16px;
+            }
+            #h-b1{
+                margin-top: 4%;
+                width: 150px;
+                padding: 15px 10px;
+            }
+            .yellowdiv{
+                height: 35%;
+            }
+            .plumdiv{
+                right: 16.5%;
+            }
+            header{
+                padding: 130px 0px;
+            }
+    }
+    @media screen and (max-width:800px){
+            #nav{
+                display: none;
+            }
+            .navicondiv{
+                display: block;
+            }
+            .logodiv{
+                height: 40px;
+                width: 180px;
+            }
+           
+        }
+        @media screen and (max-width:500px){
+            .h-border{
+                width: 400px;
+                transform: translateY(30px);
+            }
+            #h-h1{
+                font-size: 40px;
+            }
+            .yellowdiv{
+                left:0;
+                height: 30%;
+                top: 12%;
+            }
+            .plumdiv{
+                right: 21.7%;
+                height: 4%;
+                top: 22%;
+            }
+            header{
+                padding: 50px 0px;
+            }
+            #sec-1{
+                grid-template-columns: 100%;
+                grid-template-rows:auto;
+            }
+            .box1{
+                grid-row: 1/2;
+                grid-column: 1/2;
+            }
+            .box2{
+                grid-row: 2/3;
+                grid-column: 1/2;
+            }
+            .box3{
+                grid-row:3/4 ;
+                grid-column: 1/2;
+
+            }
+            .box4{
+                grid-row:4/5 ;
+                grid-column: 1/2;
+
+            }
+            .box5{
+                grid-row:5/6 ;
+                grid-column: 1/2;
+
+            }
+            .box6{
+                grid-row:6/7 ;
+                grid-column: 1/2;
+
+            }
+            .box7{
+                grid-row:7/8 ;
+                grid-column: 1/2;
+
+            }
+            .box8{
+                grid-row: 9/10;
+                grid-column: 1/2;
+
+            }
+            .box9{
+                grid-row:10/11 ;
+                grid-column: 1/2;
+
+            }
+            .box10{
+                grid-row:11/12 ;
+                grid-column: 1/2;
+
+            }
+            .box11{
+                grid-row: 12/13;
+                grid-column: 1/2;
+
+            }
+            .box12{
+                grid-row:13/14 ;
+                grid-column: 1/2;
+
+            }
+            .box13{
+                grid-row:14/15 ;
+                grid-column: 1/2;
+
+            }
+            .box14{
+                grid-row:15/16 ;
+                grid-column: 1/2;
+
+            }
+            .box15{
+                grid-row:16/17 ;
+                grid-column: 1/2;
+
+            }
+          
+        }
+        @media screen and (max-width:400px){
+            .h-border{
+                width: 315px;
+                transform: translateY(25px);
+            }
+            #h-p1{
+                font-size: 15px;
+            }
+            #h-h1{
+                font-size: 30px;
+            }
+            #h-p2{
+                letter-spacing: 0;
+                margin-top: 5%;
+                font-size: 15px;
+                word-spacing: 0;
+            }
+            .yellowdiv{
+                height: 25%;
+                top: 13%;
+            }
+            .plumdiv{
+                right: 23.5%;
+                height: 2%;
+                width: 2%;
+            }
+            #h-b1{
+                width:150px;
+                font-size: 15px;
+                margin-top: 6%;
+                padding: 10px 5px;
+            }
+            header{
+                padding: 40px 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="navbar">
+                <div class="icondiv">
+                    <i class="fa-brands fa-facebook-f"data-aos="fade-up" data-aos-duration="2100"></i>
+                    <i class="fa-brands fa-twitter"data-aos="fade-up" data-aos-duration="1700"></i>
+                    <i class="fa-brands fa-pinterest-p"data-aos="fade-up" data-aos-duration="1300"></i>
+                    <i class="fa-brands fa-instagram"data-aos="fade-up" data-aos-duration="900"></i>
+                    <i class="fa-brands fa-instalod"data-aos="fade-up" data-aos-duration="500"></i>
+                </div>
+                <div class="logodiv"><img id="logoimg" src="./logo.png" alt=""></div>
+                <ul id="nav">
+                    <li class="navlist home"data-aos="fade-up" data-aos-duration="500">HOME</li>
+                    <div class="dropdown1">
+                        <div class="dd1box6 redline">Creative Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6">Designer Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6">Portfolio Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6">Paralax Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6">Carousal Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6 hs">Header Style <i id="hsicon" class="fa-solid fa-angle-right"></i> <div class="pinkanimediv"></div>
+                        <div class="dd1innerdropdown">
+                            <div class="idd1box redline">Header Style 01 <div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 02<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 03<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 04<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 05<div class="pinkanimediv2"></div></div>
+                        </div>
+                    </div>
+                    </div>
+                    <li class="navlist about"data-aos="fade-up" data-aos-duration="900">ABOUT</li>
+                    <div class="dropdown2">
+                        <div class="dd2box redline">About <div class="pinkanimediv"></div></div>
+                        <div class="dd2box">Error Page <div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist port"data-aos="fade-up" data-aos-duration="1300">PORTFOLIO</li>
+                    <div class="dropdown3">
+                        <div class="dd3box redline">Portfolio Left-sidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Right-sidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Centered<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Slide<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Masonry<div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist blog"data-aos="fade-up" data-aos-duration="1700">BLOG</li>
+                    <div class="dropdown4">
+                        <div class="dd4box redline">Blog With Slidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog Grid<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog List<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog Mansonry<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog Single<div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist"data-aos="fade-up" data-aos-duration="2100">CONTACT US</li>
+                    <i class="fa-solid fa-bars"></i></ul>
+                    <div class="navicondiv">
+                        <i id="navicon" class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+                <div class="h-border">
+                    <p id="h-p1">Welcome To Limerick</p>
+                    <h1 id="h-h1">Design Your M<span id="i">I</span>nd</h1>
+                    <p id="h-p2">I like to think that my work is a living, breathing embodiment of my passion for discovery. Here’s some of it.</p>
+                    <button id="h-b1">READ MORE +</button>
+                    <div class="yellowdiv"></div>
+                    <div class="plumdiv"></div>
+                </div>
+        </header>
+        <section id="sec-1">
+            <div class="sec-1box box1"data-aos="fade-up"data-aos-duration="1000">
+                <img id="gridimg" src="./15.jpg" alt="">
+              <!-- //////////////////////////////////////////////////////////////////////// -->
+               <!-- ....................................................................... -->
+                <!-- ///////////////////////////////////////////////////////////////////////// -->
+                <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <!-- <div class="effectbox"> -->
+                        <!-- <div class="front"></div> -->
+                        <!-- <div class="back"></div> -->
+                    <!-- </div> -->
+                </div>
+                <!-- ........................................................................... -->
+                 <!-- //////////////////////////////////////////////////////////////////////////////// -->
+            </div>
+            <div class="sec-1box box2"data-aos="fade-up"data-aos-duration="1400"><img id="gridimg" src="./16.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box3"data-aos="fade-up"data-aos-duration="1800"><img id="gridimg" src="./17.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box4"data-aos="fade-up"data-aos-duration="2200"><img id="gridimg" src="./18.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box5"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./19.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box6"data-aos="fade-up"data-aos-duration="1500"><img id="gridimg" src="./20.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box7"data-aos="fade-up"data-aos-duration="2200"><img id="gridimg" src="./21.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2 y3"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box8"data-aos="fade-up"data-aos-duration="1500"><img id="gridimg" src="./24.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2 y4"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box9"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./22.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box10"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./23.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box11"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./25.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box12"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./26.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box13"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./27.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box14"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./28.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+            <div class="sec-1box box15"data-aos="fade-up"data-aos-duration="1000"><img id="gridimg" src="./29.jpg" alt=""> <h1 id="fliph1">Creative Portfolio</h1>
+                <div class="yellowdiv2"></div>
+                <p id="flippara">Design</p>
+                <div class="flipdiv">
+                    <div class="effectbox">
+                        <div class="front"></div>
+                        <div class="back"></div>
+                    </div>
+                </div></div>
+        </section>
+        <footer>    
+            <div class="f-logodiv"><img id="f-logo" src="../grid 2 web/logo.png" alt=""></div>
+            <p id="f-para1">© Copyright 2019 Limerick. All Rights Reserved</p>
+            <div class="f-icondiv">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-pinterest"></i>
+            </div>
+        </footer>
+    </main>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>

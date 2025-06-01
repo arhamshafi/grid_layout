@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>parallax</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.20s linear;
+        }
+        .navbar{
+            width: 100%;
+            height: max-content;
+            padding: 10px 10px;
+            display: flex;
+            /* overflow: hidden; */
+            background-color: white;
+            justify-content:space-between;
+            align-items: center;
+            position: fixed;
+            z-index: 111;
+            top: 0;
+            left: 0;
+            
+            /* border: solid black; */
+            box-shadow: 1px 1px 5px 0px grey;
+        }
+        .icondiv{
+            width: 300px;
+            height: max-content;
+            /* border: solid black; */
+            display: flex;
+            justify-content:space-evenly;
+            font-size: 20px;
+            
+            align-items: center;
+        }
+        .icondiv i:hover{
+            cursor: pointer;
+            filter: brightness(0) saturate(100%) invert(39%) sepia(54%) saturate(3451%) hue-rotate(314deg) brightness(102%) contrast(103%);
+        }
+        .logodiv{
+            width: 250px;
+            height: 70px;
+            /* border: solid black; */
+        }
+        #logoimg{
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        #nav{
+            width:550px;
+            height: max-content;
+            /* border: solid black; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .navicondiv{
+            width: 40px;
+            height: max-content;
+            display: none;
+            /* border: solid black; */
+            font-size: 20px;
+        }
+        #navicon{
+            font-size:30px;
+            filter: brightness(0) saturate(100%) invert(22%) sepia(80%) saturate(6102%) hue-rotate(355deg) brightness(105%) contrast(106%);
+        }
+        .navlist{
+            list-style: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .navlist:hover{
+            color:rgb(224, 28, 93);
+        }
+        .home{
+            color:rgb(224, 28, 93);
+        }
+       
+        .dropdown1{
+            width:35%;
+            height: max-content;
+            position: absolute;
+            top: 250%;
+            left:0;
+            opacity: 0;
+            visibility: hidden;
+            /* overflow: hidden; */
+            box-shadow: 1px 1px 10px 0px grey;
+            background-color: white;
+            /* border: solid black; */
+            /* z-index: 111; */
+        }
+        .home:hover + .dropdown1{
+            opacity: 1;
+            visibility: visible;
+            top:180%;
+        }
+        .dropdown1:hover{
+            opacity: 1;
+            visibility: visible;
+            top:180%
+        }
+        .dd1box6{
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: grey;
+            position: relative;
+            border-top: solid 1px grey;
+        }
+        #hsicon{
+            position:absolute;
+            right: 20%;
+        }
+        .dd1box6:hover{
+            color:rgb(224, 28, 93) ;
+        }
+        .pinkanimediv{
+            width: 100%;
+            height:40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color:rgb(224, 28, 93) ;
+        }
+        .dd1box6:hover .pinkanimediv{
+            animation: pinkanime .5s ease-out;
+        }
+        @keyframes pinkanime{
+            from{
+                width: 0;
+                opacity: 1;
+            }
+            to{
+                width: 100%;
+                opacity: 0;
+            }
+        }
+        .dd1innerdropdown{
+            width: 100%;
+            height:max-content;
+            box-shadow: 1px 1px 10px 0px grey;
+            flex-direction: column;
+            background-color: white;
+            position: absolute;
+            left:100%;
+            opacity: 0;
+            overflow: hidden;
+            visibility: hidden;
+            top:100%;
+        }
+        .idd1box{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            position:relative;
+            justify-content: center;
+            align-items: center;
+            border-top:solid 1px grey;
+            color: grey;
+        }
+        .idd1box:hover{
+            color:rgb(224, 28, 93) ;
+        }
+        .hs:hover .dd1innerdropdown{
+            top: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    .pinkanimediv2{
+        width: 0;
+        height: 40px;
+        background-color: rgb(224, 28, 93) ;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .3;
+     }
+    .dropdown2{
+        width: 35%;
+        height: max-content;
+        position: absolute;
+        top:250%;
+        cursor: pointer;
+        box-shadow: 1px 1px 10px 0px grey;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        left: 16%;
+        /* border: solid black; */
+    }
+    .dd2box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: grey;
+        position: relative;
+        height: 40px;
+        background-color: white;
+        border-top: solid 1px black;
+    }
+    .about:hover + .dropdown2{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .dropdown2:hover{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;   
+    }
+    .idd1box:hover .pinkanimediv2{
+     animation: .5s pinkaminediv2 forwards ease-out;
+     }
+     .dd2box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    @keyframes pinkaminediv2{
+     from{
+         opacity: 1;
+         width: 0;
+     }
+     to{
+         opacity: 0;
+         width: 100%;
+     }
+     }
+     .dropdown3{
+        position: absolute;
+        top: 250%;
+        left: 33%;
+        background-color: white;
+        width: 35%;
+        height: max-content;
+        box-shadow: 1px 1px 10px 0px grey;
+        opacity: 0;
+        cursor: pointer;
+        overflow: hidden;
+        visibility: hidden;
+     }
+     .dd3box{
+        width: 100%;
+        height: 40px;
+        border-top: 1px green solid ;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: grey;
+     }
+    .dd3box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    .dropdown3:hover{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .port:hover+ .dropdown3{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    .dropdown4{
+        width: 35%;
+        height: max-content;
+        background-color: white;
+        box-shadow: 1px 1px 10px 0px grey;
+        position: absolute;
+        top: 250%;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+        left: 57%;
+        cursor: pointer;
+        /* border: solid black; */
+        color: grey;
+    }
+    .dd4box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        position: relative;
+        border-top: 1px solid grey;
+    }
+    .dd4box:hover{
+        color: rgb(224, 28, 93) ;
+    }
+   
+    .dd4box:hover .pinkanimediv{
+     animation: .5s pinkaminediv2 forwards ease-out;
+    }
+    .dropdown4:hover{
+        top: 180%;
+        visibility: visible;
+        opacity: 1;
+    }
+    .blog:hover+ .dropdown4{
+        opacity: 1;
+        visibility: visible;
+        top: 180%;
+    }
+    /* .dropdown4:hover .blog{
+        color: rgb(224, 28, 93) ;
+        
+    } */
+    .redline{
+        border-top: solid red ;
+    }
+    header{
+        width: 100%;
+        /* padding: -0px 0px; */
+        border: solid black;
+        height: max-content;
+        background-color:whitesmoke;
+    }
+    #sec-1{
+        background-image: url(./1.jpg);
+        background-position: center;
+        background-repeat:no-repeat ;
+        background-attachment: fixed;
+        background-size: cover;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .writediv{
+        width: fit-content;
+        height: max-content;
+        margin-top: 10%;
+        background-color: white;
+    }
+    #sec-1h1{
+        font-size: 80px;
+        color: red;
+    }
+    #sec-1p1{
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        font-size: 30px;
+        margin-top: 4%;
+    }
+    #sec-2{
+        width: 100%;
+        height: 100vh;
+        background-image: url(./2.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #sec-2h1{
+        font-size: 80px;
+        color:rgb(228, 228, 38);
+    }
+    #sec-3{
+        width: 100%;
+        height: 100vh;
+        background-image: url(./3.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #sec-3h1{
+        font-size: 80px;
+        color:blue;
+    }
+    #sec-4{
+        width: 100%;
+        height: 100vh;
+        background-image: url(./4.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #sec-4h1{
+        font-size: 80px;
+        color:rgb(49, 202, 19);
+    }
+    #sec-5{
+        width: 100%;
+        height: 100vh;
+        background-image: url(./5.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #sec-5h1{
+        font-size: 80px;
+        color:mediumvioletred;
+    }
+    #sec-6{
+        width: 100%;
+        height: 100vh;
+        background-image: url(./6.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #sec-6h1{
+        font-size: 80px;
+        color:purple;
+    }
+   
+    span{
+        color: black;
+    }
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////.................////////////////////////// */
+
+    footer{
+        width: 100%;
+        height: max-content;
+        padding: 70px 0px;
+        background-color: whitesmoke;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+    }
+    .f-logodiv{
+        width: fit-content;
+        height: max-content;
+        cursor: pointer;
+        /* border: solid black; */
+    }
+    #f-logo{
+        width: 100%;
+    }
+    #f-para1{
+        color: black;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 1%;
+    }
+    .f-icondiv{
+        width: 300px;
+        height: max-content;
+        /* border: solid black; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 2%;
+    }
+    .f-icondiv i{
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .f-icondiv i:hover{
+        transform: scale(1.3);
+        filter: brightness(0) saturate(100%) invert(20%) sepia(95%) saturate(4126%) hue-rotate(317deg) brightness(103%) contrast(101%);
+    }
+    a{
+        text-decoration: none;
+        color: grey;
+    }
+    /* /////////////////////////////////////////////////////////// */
+
+
+    
+        @media screen and (max-width:1250px){
+            #nav{
+                width: 500px;
+            }
+            #navicon{
+                font-size: 20px;
+            }
+            .navlist{
+                font-size: 15px;
+            }
+            .logodiv{
+                height: 60px;
+                width: 230px;
+            }
+        }
+        @media screen and (max-width:1090px){
+            .icondiv{
+                display: none;
+            }
+            #sec-3h1{
+                font-size: 60px;
+                color:blue;
+            }
+            #sec-6h1{
+                font-size: 60px;
+                color:purple;
+            }
+           
+        }
+        @media screen and (max-width:800px){
+            #nav{
+                display: none;
+            }
+            .navicondiv{
+                display: block;
+            }
+            .logodiv{
+                height: 40px;
+                width: 180px;
+            }
+            #sec-1h1{
+                font-size: 50px;
+                color: red;
+            }
+            #sec-2h1{
+                font-size: 50px;
+                color:rgb(228, 228, 38)
+            }
+            #sec-3h1{
+                font-size: 40px;
+                color:blue;
+            }
+            #sec-4h1{
+                font-size: 40px;
+                color:rgb(49, 202, 19);
+            }
+            #sec-5h1{
+                font-size: 40px;
+                color:mediumvioletred;
+            }
+            #sec-6h1{
+                font-size: 40px;
+                color:purple;
+            }
+            #sec-1p1{
+                font-size: 25px;
+            }
+            #sec-1{
+                height: 70vh;
+            }
+            #sec-2{
+                height: 70vh;
+            }
+            #sec-3{
+                height: 70vh;
+            }
+            #sec-4{
+                height: 70vh;
+            }
+            #sec-5{
+                height: 70vh;
+            }
+            #sec-6{
+                height: 70vh;
+            }
+        }
+        @media screen and (max-width:530px) {
+            #sec-1h1{
+                font-size: 30px;
+                color: red;
+            }
+            #sec-2h1{
+                font-size: 30px;
+                color:rgb(228, 228, 38)
+            }
+            #sec-3h1{
+                font-size: 20px;
+                color:blue;
+            }
+            #sec-4h1{
+                font-size: 30px;
+                color:rgb(49, 202, 19);
+            }
+            #sec-5h1{
+                font-size: 30px;
+                color:mediumvioletred;
+            }
+            #sec-6h1{
+                font-size: 22px;
+                color:purple;
+            }
+            #sec-1p1{
+                font-size: 20px;
+            }
+            #f-para1{
+                font-size: 15px;
+                letter-spacing: 2px;
+            }
+            .f-icondiv{
+                width: 200px;
+                margin-top: 7%;
+            }
+            .f-icondiv i{
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="navbar">
+                <div class="icondiv">
+                    <i class="fa-brands fa-facebook-f"data-aos="fade-up" data-aos-duration="2100"></i>
+                    <i class="fa-brands fa-twitter"data-aos="fade-up" data-aos-duration="1700"></i>
+                    <i class="fa-brands fa-pinterest-p"data-aos="fade-up" data-aos-duration="1300"></i>
+                    <i class="fa-brands fa-instagram"data-aos="fade-up" data-aos-duration="900"></i>
+                    <i class="fa-brands fa-instalod"data-aos="fade-up" data-aos-duration="500"></i>
+                </div>
+                <div class="logodiv"><img id="logoimg" src="./footer-logo.png " alt=""></div>
+                <ul id="nav">
+                    <li class="navlist home"data-aos="fade-up" data-aos-duration="500">HOME</li>
+                    <div class="dropdown1">
+                       <a href="../grid web home/grid web.html"><div class="dd1box6 redline">Creative Home <div class="pinkanimediv"></div></div></a>
+                       <a href="../gridweb dh/grid 3 web.html"><div class="dd1box6">Designer Home <div class="pinkanimediv"></div></div></a>
+                        <div class="dd1box6">Portfolio Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6">Paralax Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6">Carousal Home <div class="pinkanimediv"></div></div>
+                        <div class="dd1box6 hs">Header Style <i id="hsicon" class="fa-solid fa-angle-right"></i> <div class="pinkanimediv"></div>
+                        <div class="dd1innerdropdown">
+                            <div class="idd1box redline">Header Style 01 <div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 02<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 03<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 04<div class="pinkanimediv2"></div></div>
+                            <div class="idd1box">Header Style 05<div class="pinkanimediv2"></div></div>
+                        </div>
+                    </div>
+                    </div>
+                    <li class="navlist about"data-aos="fade-up" data-aos-duration="900">ABOUT</li>
+                    <div class="dropdown2">
+                       <a href="../grid 2 web about/gridabout.html"><div class="dd2box redline">About <div class="pinkanimediv"></div></div></a>
+                        <div class="dd2box">Error Page <div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist port"data-aos="fade-up" data-aos-duration="1300">PORTFOLIO</li>
+                    <div class="dropdown3">
+                        <div class="dd3box redline">Portfolio Left-sidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Right-sidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Centered<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Slide<div class="pinkanimediv"></div></div>
+                        <div class="dd3box">Portfolio Masonry<div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist blog"data-aos="fade-up" data-aos-duration="1700">BLOG</li>
+                    <div class="dropdown4">
+                        <div class="dd4box redline">Blog With Slidebar<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog Grid<div class="pinkanimediv"></div></div>
+                        <a href="../grid web bloglist/bloglist.html"><div class="dd4box">Blog List<div class="pinkanimediv"></div></div></a>
+                        <div class="dd4box">Blog Mansonry<div class="pinkanimediv"></div></div>
+                        <div class="dd4box">Blog Single<div class="pinkanimediv"></div></div>
+                    </div>
+                    <li class="navlist"data-aos="fade-up" data-aos-duration="2100">CONTACT US</li>
+                    <i class="fa-solid fa-bars"></i></ul>
+                    <div class="navicondiv">
+                        <i id="navicon" class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+        </header>
+        <section id="sec-1">
+            <div class="writediv"><h1 id="sec-1h1">CREATIVE <span>DESIGN</span></h1></div>
+            <p id="sec-1p1">Branding Design</p>
+        </section>
+        <section id="sec-2">
+            <div class="writediv"><h1 id="sec-2h1">MODERN <span>DESIGN</span></h1></div>
+            <p id="sec-1p1">Branding Design</p>
+        </section>
+        <section id="sec-3">
+            <div class="writediv"><h1 id="sec-3h1">BRANDING <span>COLLECTION</span></h1></div>
+            <p id="sec-1p1">Branding Design</p>
+        </section>
+        <section id="sec-4">
+            <div class="writediv"><h1 id="sec-4h1">CUP OF <span>COFEE</span></h1></div>
+            <p id="sec-1p1">Branding Design</p>
+        </section>
+        <section id="sec-5">
+            <div class="writediv"><h1 id="sec-5h1">MINIMAL <span>DESIGN</span></h1></div>
+            <p id="sec-1p1">Branding Design</p>
+        </section>
+        <section id="sec-6">
+            <div class="writediv"><h1 id="sec-6h1">RESTARUNT<span>COLLECTION</span></h1></div>
+            <p id="sec-1p1">Branding Design</p>
+        </section>
+        <footer>    
+            <div class="f-logodiv"><img id="f-logo" src="./footer-logo.png" alt=""></div>
+            <p id="f-para1">© Copyright 2019 Limerick. All Rights Reserved</p>
+            <div class="f-icondiv">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-pinterest"></i>
+            </div>
+        </footer>
+    </main>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>

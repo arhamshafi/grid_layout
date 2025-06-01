@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>gridweb</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            transition:all 0.3s linear;
+            box-sizing: border-box;
+        }
+        .nav{
+            width: 100%;
+            height: max-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 111;
+            background-color: rgba(255, 255, 255, 0.515);
+            padding: 10px 20px;
+            /* border: solid black; */
+            box-shadow: 1px 1px 10px 0px grey;
+        }
+        .navlogodiv{
+            width: 180px;
+            height: max-content;
+            /* border: solid black; */
+        }
+        #n-logo{
+            width: 100%;
+            cursor: pointer;
+        }
+        .navicondiv{
+            width: 200px;
+            height: max-content;
+            display: flex;
+            justify-content: space-evenly;
+            /* border: solid black; */
+
+        }
+        .navicondiv i{
+           font-size: 17px;
+           cursor: pointer;
+        }
+        .navicondiv i:hover{
+            /* filter: brightness(0) saturate(100%) invert(31%) sepia(80%) saturate(2209%) hue-rotate(289deg) brightness(89%) contrast(113%); */
+            filter: brightness(0) saturate(100%) invert(99%) sepia(45%) saturate(3701%) hue-rotate(332deg) brightness(107%) contrast(111%);
+        }
+        header{
+            width: 100%;
+            height:max-content;
+            /* border: solid black; */
+            display: grid;
+            grid-template-columns: 50% 25% 25%;
+            grid-template-rows:50% 50% ;
+        }
+        .h-box{
+            /* border: solid red; */
+            overflow: hidden;
+            position: relative;
+        }
+        #h-boximg{
+            width: 100%;
+            height: 100%;
+        }
+        #h-boximg:hover{
+            transform: scale(1.1);
+            rotate: 1deg;
+        }
+        .h-box1{
+            grid-row: 1/3;
+        }
+        .hb1border{
+            width: 80%;
+            height: max-content;
+            /* border: solid black; */
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: absolute;
+            bottom: 7%;
+            z-index: 2;
+            left: 10%;
+        }
+        .hb1border:hover+ #h-boximg{
+            transform: scale(1.1);
+            rotate: 1deg;
+        }
+        #h-h1{
+            width: fit-content;
+            color: white;
+            font-size: 70px;
+        }
+        #h-h1:hover{
+            color:palevioletred;
+        }
+        #h-b1{
+            width: 180px;
+            background-color: palevioletred;
+            height: 60px;
+            border-radius: 50px;
+            font-size:larger;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+        #h-b1:hover{
+            color: palevioletred;
+            background-color: transparent;
+            border: solid palevioletred;
+        }
+        .pinkdiv{
+            width: 50%;
+            height: 20%;
+            background-color: rgb(228, 85, 109);
+            position: absolute;
+            top: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            z-index: 2;
+            opacity: 0;
+            padding-right: 10px;
+            left: -50%;
+        }
+        .h-box:hover .pinkdiv{
+            left: 0;
+            opacity: 1;
+        }
+        .blackdiv{
+            width: 50%;
+            height: 20%;
+            top: 40%;
+            z-index: 2;
+            opacity: 0;
+            position: absolute;
+            background-color: black;
+            right: -50%;
+            justify-content: start;
+            align-items: center;
+            display: flex;
+            padding-left: 10px;
+        }
+        .h-box:hover .blackdiv{
+            right: 0;
+            opacity: 1;
+        }
+        .whitediv{
+            width: 15%;
+            height: 15%;
+            position: absolute;
+            top: 60%;
+            opacity: 0;
+            left: 33%;
+            display: flex;
+            z-index: 3;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .whitediv:hover{
+            
+            background-color: black;
+        }
+        .h-box:hover .whitediv{
+            top: 42.5%;
+            opacity: 1;
+        }
+        .whitediv i{
+            font-size: 20px;
+            transition: none;
+            filter: brightness(0) saturate(100%) invert(36%) sepia(99%) saturate(1547%) hue-rotate(301deg) brightness(102%) contrast(101%);
+        }
+        .whitediv:hover i{
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(228deg) brightness(107%) contrast(101%);
+        }
+        .whitediv2{
+            width: 15%;
+            height: 15%;
+            position: absolute;
+            top: 60%;
+            right: 33%;
+            opacity: 0;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .whitediv2:hover{
+            background-color: black;
+        }
+        .h-box:hover .whitediv2{
+            top: 42.5%;
+            opacity: 1;
+        }
+        .whitediv2 i{
+            transition: none;
+            font-size: 20px;
+            filter: brightness(0) saturate(100%) invert(36%) sepia(99%) saturate(1547%) hue-rotate(301deg) brightness(102%) contrast(101%);
+        }
+        .whitediv2:hover i{
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(228deg) brightness(107%) contrast(101%);
+        }
+        #h-h2{
+            position: absolute;
+            z-index: 2;
+            font-size: 60px;
+            color: white;
+            top: 40%;
+            left: 20%;
+        }
+        #sec-1{
+            width: 100%;
+            height:max-content;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: auto;
+        }
+        .sec-1box{
+            /* border: solid black; */
+            overflow: hidden;
+            position: relative;
+        }
+        .box3{
+            grid-column:3/5 ;
+        }
+        .box4{
+            grid-column: 1/3;
+        }
+        .box7{
+            grid-column:1/3 ;
+        }
+        #sec-1boximg{
+            width: 101%;
+            height: 100%;
+        }
+        .sec-1box:hover #sec-1boximg{
+            transform: scale(1.1);
+            rotate: 2deg;
+        }
+        .sec-1pinkdiv{
+            width: 50%;
+            height: 20%;
+            position: absolute;
+            top: 40%;
+            left: -50%;
+            opacity: 0;
+            background-color: rgb(228, 85, 109);
+        }
+        .sec-1box:hover .sec-1pinkdiv{
+            left: 0;
+            opacity: 1;
+        } 
+        .sec-1blackdiv{
+            width: 50%;
+            height: 20%;
+            position: absolute;
+            top: 40%;
+            right: -50%;
+            opacity: 0;
+            background-color:black;
+        }
+        .sec-1box:hover .sec-1blackdiv{
+            right: 0;
+            opacity: 1;
+        } 
+        .sec-1whitediv1{
+            width: 15%;
+            height: 15%;
+            border-radius: 10px;
+            position: absolute;
+            top: 65%;
+            left: 33%;
+            z-index: 2;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+        .sec-1whitediv1:hover{
+            background-color: black;
+        }
+        .sec-1whitediv1 i{
+            transition: none;
+            filter: brightness(0) saturate(100%) invert(61%) sepia(44%) saturate(1738%) hue-rotate(283deg) brightness(111%) contrast(104%);
+        }
+        .sec-1whitediv1:hover i{
+            filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(7500%) hue-rotate(312deg) brightness(110%) contrast(99%);
+        }
+       
+        .sec-1whitediv2{
+            width: 15%;
+            height: 15%;
+            border-radius: 10px;
+            position: absolute;
+            top: 65%;
+            opacity: 0;
+            right: 33%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            background-color: white;
+        }
+        .sec-1box:hover .sec-1whitediv1{
+            top: 42.5%;
+            opacity: 1;
+        }
+        .sec-1box:hover .sec-1whitediv2{
+            top: 42.5%;
+            opacity: 1;
+        }
+        .sec-1whitediv2:hover i{
+            transition: none;
+            filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(7500%) hue-rotate(312deg) brightness(110%) contrast(99%);
+        }
+        .sec-1whitediv2:hover{
+            background-color: black;
+        }
+        .sec-1whitediv2 i{
+            filter: brightness(0) saturate(100%) invert(61%) sepia(44%) saturate(1738%) hue-rotate(283deg) brightness(111%) contrast(104%);
+        }
+        .w3{
+            width: 7%;
+            left: 41%;
+        }
+        .w4{
+            width: 7%;
+            right: 42%;
+        }
+
+        .purpleboxdiv{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+        }
+        #pbpara1{
+            color: white;
+            font-size: 20px;
+            margin-top: 10%;
+            margin-left: 10%;
+        }
+        #pbh1{
+            font-size:25px;
+            text-align: center;
+            width: 90%;
+            margin: auto;
+            margin-top: 25%;
+            color: white;
+            line-height: 30px;
+        }
+        .box6div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            /* background-color: yellow; */
+        }
+        a{
+          text-decoration: none;
+
+        }
+
+/* //////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////// */
+
+   @media screen and (max-width:1449px) {
+        .box7{
+            grid-column: 3/5;
+        }
+        .box8{
+            grid-row: 3/4;
+        }
+        .box9{
+            grid-row: 3/4;
+        }
+
+   }
+
+
+
+    @media screen and (max-width:1300px){
+        #h-h1{
+            font-size: 50px;
+        }
+        #h-b1{
+            width: 140px;
+            height: 50px;
+            font-size: large;
+        }
+        #h-h2{
+            font-size:50px ;
+            left: 15%;
+        }
+        #pbh1{
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+
+    }
+    
+    @media screen and (max-width:1025px){
+        #h-h1{
+            font-size: 40px;
+        }
+        #h-b1{
+            width: 140px;
+            height: 50px;
+            font-size: large;
+        }
+        #h-h2{
+            font-size:35px;
+            left: 20%;
+            top: 45%;
+        }
+        .hb1border{
+            width: 100%;
+        }
+        #pbh1{
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+    }
+    @media screen and (max-width:990px) {
+        header{
+            grid-template-columns: 50% 50%;
+            grid-template-rows:2fr 1fr 1fr ;
+        }
+        .h-box1{
+            grid-column: 1/3;
+            grid-row: 1/2;
+        }
+        #h-h2{
+            font-size:50px;
+            left: 25%;
+            top: 45%;
+        }
+        #sec-1{
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows:12% 12% 12% 12% 12% 12% 12% 12% 12% 12%;
+        }
+        .box1{
+            grid-column: 1/2;
+            grid-row: 1/3;
+        }
+        .box2{
+            grid-column: 2/3;
+            grid-row: 2/4;
+        }
+        .box3{
+            grid-column: 2/3;
+            grid-row: 1/2;
+        }
+        .box4{
+            grid-column: 1/2;
+            grid-row: 3/4;
+        }
+        .box5{
+            grid-column: 1/2;
+            grid-row: 4/6;
+        }
+        .box6{
+            grid-column: 2/3;
+            grid-row: 4/6;
+        }
+        .box8{
+            grid-column: 1/2;
+            grid-row: 6/8;
+        }
+        .box9{
+            grid-column: 2/3;
+            grid-row: 6/8;
+        }
+        .box7{
+            grid-column: 1/3;
+            grid-row:8/10 ;
+        }
+        
+    }
+    @media screen and (max-width:750px){
+        header{
+            grid-template-columns: 100%;
+            grid-template-rows: auto;
+        }
+        .h-box3{
+            grid-column: 1/2;
+            grid-row: 3/4;
+        }
+        .h-box4{
+            grid-column: 1/2;
+            grid-row: 4/5;
+        }
+        .h-box5{
+            grid-column: 1/2;
+            grid-row: 5/6;
+        }
+        #h-h2{
+            font-size:60px;
+            left: 30%;
+            top: 40%;
+        }
+        #sec-1{
+            grid-template-columns: 1fr;
+            grid-template-rows:13% 13% 7% 7% 13% 13% 13% 13% 9%;
+        }
+        .box1{
+            grid-column: 1/2;
+            grid-row: 1/2;
+        }
+        .box2{
+            grid-column: 1/2;
+            grid-row: 2/3;
+        }
+        .box3{
+            grid-column: 1/2;
+            grid-row: 3/4;
+        }
+        .box4{
+            grid-column: 1/2;
+            grid-row: 4/5;
+        }
+        .box5{
+            grid-column: 1/2;
+            grid-row:5/6;
+        }
+        .box6{
+            grid-column: 1/2;
+            grid-row: 6/7;
+        }
+        .box8{
+            grid-column:1/2;
+            grid-row: 7/8;
+        }
+        .box9{
+            grid-column: 1/2;
+            grid-row: 8/9;
+        }
+        .box7{
+            grid-column: 1/2;
+            grid-row: 9/10;
+        }
+    }
+    @media screen and (max-width:450px) {
+        .navicondiv{
+            display: none;
+        }
+        .nav{
+            justify-content: center;
+        }
+        #h-h2{
+            font-size:40px;
+            left: 30%;
+            top: 45%;
+        }
+    }
+    @media screen and (max-width:375px) {
+        #h-h1{
+            font-size: 25px;
+        }
+        #h-b1{
+            width: 100px;
+            height: 30px;
+            font-size:13px;
+        }
+    }
+
+
+
+        
+        
+        </style>
+
+</head>
+<body>
+    <main>
+        <div class="nav">
+            <div class="navlogodiv"><img id="n-logo" src="./logo.png" alt=""></div>
+            <div class="navicondiv">
+                <i class="fa-solid fa-bars"></i>
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-google-plus-g"></i>
+                <i class="fa-brands fa-pinterest-p"></i>
+            </div>
+        </div>
+        <header>
+            <div class="h-box h-box1">
+                <div class="hb1border">
+                    <h1 id="h-h1">Paper Lost Boat</h1>
+                    <button id="h-b1">Read More +</button>
+                </div>
+                <img id="h-boximg" src="./1.jpg" alt="">
+            </div>
+            <div class="h-box h-box2">
+                <div class="pinkdiv"></div>
+                <div class="whitediv"><i class="fa-solid fa-link"></i></div>
+                <div class="blackdiv"></div>
+                <div class="whitediv2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <img id="h-boximg" src="./2.jpg" alt="">
+            </div>
+          <div class="h-box h-box3"><img id="h-boximg" src="./3.jpg" alt=""> <a href="../grid 2 web about/gridabout.html"><h1 id="h-h2">About Us</h1></a></div>
+            <div class="h-box h-box4"><img id="h-boximg" src="./4.jpg" alt="">
+                <div class="pinkdiv"></div>
+                <div class="whitediv"><i class="fa-solid fa-link"></i></div>
+                <div class="blackdiv"></div>
+                <div class="whitediv2"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+            <div class="h-box h-box5"><img id="h-boximg" src="./5.jpg" alt="">
+                <div class="pinkdiv"></div>
+                <div class="whitediv"><i class="fa-solid fa-link"></i></div>
+                <div class="blackdiv"></div>
+                <div class="whitediv2"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+    </header>
+            <section id="sec-1">
+               <div class="sec-1box box1"><img id="sec-1boximg" src="./6.jpg" alt="">
+                <div class="sec-1pinkdiv"></div>
+                <div class="sec-1blackdiv"></div>
+                <div class="sec-1whitediv1"><i class="fa-solid fa-link"></i></div>
+                <div class="sec-1whitediv2"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+               <div class="sec-1box box2"><img id="sec-1boximg" src="./7.jpg" alt="">
+                <div class="purpleboxdiv"><p id="pbpara1">We Are Branding</p><h1 id="pbh1">Check out all my awesome art work. Our Amazing Portfolio Capitalize on low the hanging fruit to tify</h1></div>
+            </div>
+               <div class="sec-1box box3"><img id="sec-1boximg" src="./8.jpg" alt="">
+                <div class="sec-1pinkdiv"></div>
+                <div class="sec-1blackdiv"></div>
+                <div class="sec-1whitediv1 w3"><i class="fa-solid fa-link"></i></div>
+                <div class="sec-1whitediv2 w4"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+              <div class="sec-1box box4"><img id="sec-1boximg" src="./10.jpg" alt="">\
+                <div class="sec-1pinkdiv"></div>
+                <div class="sec-1blackdiv"></div>
+                <div class="sec-1whitediv1 w3"><i class="fa-solid fa-link"></i></div>
+                <div class="sec-1whitediv2 w4"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+            <div class="sec-1box box5"><img id="sec-1boximg" src="./9.jpg" alt="">
+                <div class="sec-1pinkdiv"></div>
+                <div class="sec-1blackdiv"></div>
+                <div class="sec-1whitediv1"><i class="fa-solid fa-link"></i></div>
+                <div class="sec-1whitediv2"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+               <div class="sec-1box box6"><img id="sec-1boximg" src="./11.jpg" alt="">
+                <div class="box6div"><h1 id="b6h1">Meet Team</h1><button id="b6button">SEE TEAM +</button></div>
+            </div>
+             <div class="sec-1box box7"><img id="sec-1boximg" src="./14.jpg" alt=""></div>
+               <div class="sec-1box box8"><img id="sec-1boximg" src="./12.jpg" alt="">
+                <div class="sec-1pinkdiv"></div>
+                <div class="sec-1blackdiv"></div>
+                <div class="sec-1whitediv1"><i class="fa-solid fa-link"></i></div>
+                <div class="sec-1whitediv2"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+               <div class="sec-1box box9"><img id="sec-1boximg" src="./13.jpg" alt=""></div> 
+            </section> 
+</main>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .parent{
+            width: 80vw;
+            height: 100vh;
+            border: solid black;
+            display: grid;
+            /* overflow: hidden; */
+            grid-template-columns: 33.5% 33% 20% 13.5%;
+            grid-template-rows: auto;
+            
+        }
+        .box9{
+            border: solid black;
+            /* display: flex;
+            justify-content: center;
+            align-content: center; */
+        }
+        .b1{
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 4;
+        }
+        .b2{
+          grid-column-start: 3;
+          grid-column-end: 4;
+          grid-row-start: 1;
+          grid-row-end: 4;
+        }
+        .b6{
+            grid-row-start:2;
+            grid-row-end:4;
+
+        }
+
+    </style>
+<body>
+    <main>
+        <header>
+            <div class="parent">
+                <div class="box9 b1">1</div>
+                <div class="box9 b2">2</div>
+                <div class="box9 b3">3</div>
+                <div class="box9 b4">4</div>
+                <div class="box9 b5">5</div>
+                <div class="box9 b6">6</div>
+                <div class="box9 b7">7</div>
+                <div class="box9 b8">8</div>
+                <div class="box9 b9">9</div>
+            </div>
+        </header>
+    </main>
+</body>
+</html>
